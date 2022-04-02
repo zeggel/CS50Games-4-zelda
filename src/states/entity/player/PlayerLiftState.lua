@@ -10,7 +10,7 @@ function PlayerLiftState:update(dt)
     -- if we've fully elapsed through one cycle of animation, change back to idle state
     if self.player.currentAnimation.timesPlayed > 0 then
         self.player.currentAnimation.timesPlayed = 0
-        self.player:changeState('idle')
+        self.player:changeState('lifted-idle')
     end
 end
 
