@@ -121,7 +121,7 @@ function Room:generateObjects()
         local potY = getRandomY()
 
         if potX ~= switchX or potY ~= switchY then
-            local pot = GameObject(
+            local pot = ThrowableObject(
                 GAME_OBJECT_DEFS['pot'],
                 potX,
                 potY

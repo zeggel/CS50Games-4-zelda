@@ -11,10 +11,16 @@ Player = Class{__includes = Entity}
 function Player:init(def)
     Entity.init(self, def)
     self.maxHealth = self.health
+    self.carry = nil
 end
 
 function Player:update(dt)
     Entity.update(self, dt)
+
+    if self.carry then
+        self.carry.x = self.x
+        self.carry.y = self.y - 5
+    end
 end
 
 function Player:collides(target)
@@ -26,6 +32,9 @@ end
 
 function Player:render()
     Entity.render(self)
+    if self.carry then
+        self.carry:render(0, 0)
+    end
     
     -- love.graphics.setColor(255, 0, 255, 255)
     -- love.graphics.rectangle('line', self.x, self.y, self.width, self.height)

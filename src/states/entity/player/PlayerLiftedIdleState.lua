@@ -14,6 +14,15 @@ function PlayerLiftedIdleState:update(dt)
         self.entity:changeState('lifted-walk')
     end
 
+    if self.entity.carry and (love.keyboard.wasPressed('space') or love.keyboard.wasPressed('return')) then
+        local pot = self.entity.carry
+        pot.y = pot.y + 5
+        pot.thrown = true
+        self.entity.carry = nil
+
+        self.entity:changeState('idle')
+    end
+
     -- if love.keyboard.wasPressed('space') then
     --     self.entity:changeState('swing-sword')
     -- end
