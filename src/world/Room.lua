@@ -32,6 +32,9 @@ function Room:init(player)
 
     -- reference to player for collisions, etc.
     self.player = player
+    if player.carry then
+        table.insert(self.objects, player.carry)
+    end
 
     -- used for centering the dungeon rendering
     self.renderOffsetX = MAP_RENDER_OFFSET_X

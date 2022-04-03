@@ -13,10 +13,13 @@ function ThrowableObject:fire(direction)
     self.direction = direction
     self.y = self.y + 5
     self.thrown = true
+    self.distance = 0
 end
 
 function ThrowableObject:update(dt)
     if self.thrown then
+        self.distance = self.distance + self.speed * dt
+        
         if self.direction == 'left' then
             self.x = self.x - self.speed * dt
 
@@ -48,6 +51,10 @@ function ThrowableObject:update(dt)
                 self.y = bottomEdge - self.height
                 self.bumped = true
             end
+        end
+
+        if not self.bumped and self.distance > TILE_SIZE * 4 then
+            self.bumped = true
         end
     end
 end
