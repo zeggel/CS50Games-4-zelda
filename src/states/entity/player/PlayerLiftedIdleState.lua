@@ -18,6 +18,7 @@ function PlayerLiftedIdleState:update(dt)
         local pot = self.entity.carry
         pot.y = pot.y + 5
         pot.thrown = true
+        pot.direction = self.entity.direction
         self.entity.carry = nil
 
         self.entity:changeState('idle')
