@@ -229,6 +229,21 @@ function Room:update(dt)
                 table.remove(self.objects, k)
             end
         end
+
+        if object.bumped then
+            gSounds['hit-enemy']:play()
+            table.remove(self.objects, k)
+        end
+
+        if object.thrown then
+            for _, entity in pairs(self.entities) do
+                if not entity.dead and entity:collides(object) then
+                    entity.health = entity.health - 1
+                    gSounds['hit-enemy']:play()
+                    table.remove(self.objects, k)
+                end
+            end
+        end
     end
 end
 

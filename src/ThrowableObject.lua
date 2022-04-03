@@ -6,7 +6,13 @@ function ThrowableObject:init(def, x , y)
     self.thrown = false
     self.bumped = false
     self.direction = 'left'
-    self.speed = 80
+    self.speed = 100
+end
+
+function ThrowableObject:fire(direction)
+    self.direction = direction
+    self.y = self.y + 5
+    self.thrown = true
 end
 
 function ThrowableObject:update(dt)
@@ -42,10 +48,6 @@ function ThrowableObject:update(dt)
                 self.y = bottomEdge - self.height
                 self.bumped = true
             end
-        end
-
-        if self.bumped then
-            self.thrown = false
         end
     end
 end

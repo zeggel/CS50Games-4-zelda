@@ -16,9 +16,7 @@ function PlayerLiftedIdleState:update(dt)
 
     if self.entity.carry and (love.keyboard.wasPressed('space') or love.keyboard.wasPressed('return')) then
         local pot = self.entity.carry
-        pot.y = pot.y + 5
-        pot.thrown = true
-        pot.direction = self.entity.direction
+        pot:fire(self.entity.direction)
         self.entity.carry = nil
 
         self.entity:changeState('idle')
